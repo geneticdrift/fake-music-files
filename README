@@ -57,3 +57,16 @@ Options:
     
     -h, --help
     	--usage      Output this message.
+
+Building
+--------
+
+1. taglib - >= 1.7 tagging library
+2. uchardet - charset detection library
+3. python-docutils - rst2man required for generating manpage
+4. gcc >= 4.8 - required `-std=c++11`
+5. autoconf >= 2.6 (for maintainer)
+
+Dependencies installation on ubuntu:
+
+    apt-get install libuchardet-dev libtag1-dev python-docutils autoconf

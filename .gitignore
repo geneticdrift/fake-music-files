@@ -9,7 +9,6 @@ build
 # auto tools
 **Makefile
 autom4*
-configure
 **Makefile.in
 config.log
 config.h

@@ -1,0 +1,32 @@
+Installation Instructions
+=========================
+
+Dependencies
+------------
+
+1. taglib - >= 1.7 tagging library
+2. uchardet - charset detection library
+3. FreeCDDB data files
+4. python-docutils - rst2man required for generating manpage
+5. autoconf >= 2.6 - building from source
+
+Dependencies installation on ubuntu:
+
+	apt-get install libuchardet-dev libtag1-dev python-docutils autoconf
+
+FreeCDDB installation:
+
+    wget http://ftp.freedb.org/pub/freedb/freedb-update-20120101-20120201.tar.bz2
+	mkdir cddb
+	cd cddb
+    tar jxvf freedb-update-20120101-20120201.tar.bz2
+
+
+Build and install
+-----------------
+
+    tar zxvf fmf-1.0.tar.gz
+    cd fmf-1.0
+    ./configure
+    make
+    make install

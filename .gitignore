@@ -1,0 +1,23 @@
+Debug
+Release
+.settings
+gmon.out
+fmf.cache
+gen
+build
+
+# auto tools
+**Makefile
+autom4*
+configure
+**Makefile.in
+config.log
+config.h
+*~$
+configure.scan
+autoscan*
+stamp-h1
+.deps
+fmf
+fmf.1
+fmf-1.0.tar.gz

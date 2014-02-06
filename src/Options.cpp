@@ -317,7 +317,7 @@ bool Options::parse(int argc, char** argv) {
 		Tracer::set_verbosity(verbosity());
 	}
 	else {
-		usage(argv[0], std::cout);
+		Tracer::cout("\nFor usage information try: ", argv[0], " --usage");
 	}
 
 	return m_valid;

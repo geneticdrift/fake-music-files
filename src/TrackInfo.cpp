@@ -26,14 +26,15 @@ namespace FMF {
 
 TrackInfo::TrackInfo() :
 		m_db_file(),
-				m_title(),
-				m_album(),
-				m_artist(),
-				m_genre(),
-				m_comment(),
-				m_year(0),
-				m_track_num(0),
-				m_tracks_total(0) {
+		m_album_artist(),
+		m_title(),
+		m_album(),
+		m_artist(),
+		m_genre(),
+		m_comment(),
+		m_year(0),
+		m_track_num(0),
+		m_tracks_total(0) {
 }
 
 bool TrackInfo::validate() const {
@@ -42,6 +43,7 @@ bool TrackInfo::validate() const {
 
 std::ostream& operator <<(std::ostream& os, const TrackInfo& ti) {
 	os << "db file: " << ti.m_db_file << std::endl;
+	os << "album artist: " << ti.m_album_artist << std::endl;
 	os << "title: " << ti.m_title << std::endl;
 	os << "album: " << ti.m_album << std::endl;
 	os << "artist: " << ti.m_artist << std::endl;

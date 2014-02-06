@@ -134,7 +134,7 @@ std::string name_to_path_name(const std::string& name) {
 }
 
 bool MusicFileCreator::make_dir_path(const TrackInfo& ti, std::string& opath) {
-	std::string artist_path(name_to_path_name(ti.artist()));
+	std::string artist_path(name_to_path_name(ti.album_artist()));
 	std::string album_path(name_to_path_name(ti.album()));
 	if (artist_path.empty())
 		artist_path = "Unknown";
@@ -159,15 +159,18 @@ bool MusicFileCreator::make_dir_path(const TrackInfo& ti, std::string& opath) {
 }
 
 std::string MusicFileCreator::make_file_name(const TrackInfo& ti) {
-	const size_t max_name_len = NAME_MAX - m_template_file.extension().length() - 1;
+	constexpr const char* INDEX_DELIM = " - ";
+	const int index_width = std::max(2U, static_cast<unsigned>(::log10(ti.tracks_total())));
+	const int reserved_len = m_template_file.extension().length() + 1 + index_width + sizeof(INDEX_DELIM) - 1;
+	const size_t max_name_len = NAME_MAX - reserved_len;
 	std::string fname = ti.title();
 	if (fname.length() > max_name_len) {
 		fname = fname.substr(0, std::min(max_name_len, ti.title().length()));
 	}
 	fname = Dir::path_escape(fname);
 	std::ostringstream os;
-	int width = std::max(2U, static_cast<unsigned>(::log10(ti.tracks_total())));
-	os << std::setw(width) << std::setfill('0') << ti.track_num() << " - " << fname << '.'
+
+	os << std::setw(index_width) << std::setfill('0') << ti.track_num() << INDEX_DELIM << fname << '.'
 			<< m_template_file.extension();
 	return os.str();
 }

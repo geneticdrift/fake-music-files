@@ -295,6 +295,7 @@ std::vector<TrackInfo> CDDBParser::getTracks() const {
 		}
 		TrackInfo ti;
 		ti.set_db_file(m_db_file);
+		ti.set_album_artist(disk_artist);
 		ti.set_title(track_artist_title.second);
 		ti.set_album(disk_title);
 		ti.set_artist(track_artist_title.first.empty() ? disk_artist : track_artist_title.first);

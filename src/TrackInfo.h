@@ -43,27 +43,31 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const TrackInfo& ti);
 
-	void set_album(std::string album) {
+	void set_album(const std::string album) {
 		m_album = album;
 	}
 
-	void set_artist(std::string artist) {
+	void set_artist(const std::string artist) {
 		m_artist = artist;
 	}
 
-	void set_comment(std::string comment) {
+	void set_comment(const std::string comment) {
 		m_comment = comment;
 	}
 
-	void set_db_file(std::string dbFile) {
+	void set_db_file(const std::string dbFile) {
 		m_db_file = dbFile;
 	}
 
-	void set_genre(std::string genre) {
+	void set_album_artist(const std::string album_artist) {
+		m_album_artist = album_artist;
+	}
+
+	void set_genre(const std::string genre) {
 		m_genre = genre;
 	}
 
-	void set_title(std::string title) {
+	void set_title(const std::string title) {
 		m_title = title;
 	}
 
@@ -95,6 +99,10 @@ public:
 		return m_db_file;
 	}
 
+	std::string album_artist() const {
+		return m_album_artist;
+	}
+
 	std::string genre() const {
 		return m_genre;
 	}
@@ -117,6 +125,7 @@ public:
 
 private:
 	std::string m_db_file;
+	std::string m_album_artist;
 	std::string m_title;
 	std::string m_album;
 	std::string m_artist;

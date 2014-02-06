@@ -68,7 +68,13 @@ int main(int argc, char** argv) {
 	if (!ctx.init())
 		return EXIT_FAILURE;
 
+	if (opts.only_update_cache())
+		return EXIT_SUCCESS;
+
 	MusicFileCreator creator(ctx);
+
+	if (!creator.init())
+		return EXIT_FAILURE;
 
 	MusicFilesGenerator generator(ctx);
 

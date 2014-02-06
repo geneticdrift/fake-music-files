@@ -8,7 +8,7 @@ fake music files generator
 
 :Author: gd@iotide.com
 :Copyright: gd@iotide.com
-:Version: fake music files generator
+:Version: 1.0.1
 :Manual section: 1
 :Manual group: User commands
 

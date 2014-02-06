@@ -279,6 +279,11 @@ Dir::EachResult CDDB::GenreCache::on_dir_entry(const Dir& dir, const dirent& de)
 	return Dir::EachResult::CONTINUE;
 }
 
+void CDDB::GenreCache::on_dir_end(const Dir& dir) {
+	// erase the output line
+	std::cout << std::setw(80) << std::setfill(' ') << "\r";
+}
+
 void CDDB::GenreCache::init_random() {
 	m_random_dist.param(RandomDistribution::param_type(1, size()));
 }
@@ -303,7 +308,7 @@ std::istream& operator >>(std::istream& is, CDDB::GenreCache& cache) {
 std::ostream& operator <<(std::ostream& os, const CDDB::GenreCache& cache) {
 	uint32_t n = cache.m_entries.size();
 	os.write((char*) &n, sizeof(n));
-	os.write((char*) cache.m_entries.begin().base(), cache.m_entries.size() * sizeof(uint32_t));
+	os.write((char*) &cache.m_entries[0], cache.m_entries.size() * sizeof(uint32_t));
 	return os;
 }
 

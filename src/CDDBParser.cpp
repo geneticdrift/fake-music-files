@@ -212,7 +212,7 @@ bool CDDBParser::parse(const std::string& path) {
 	reset();
 
 	m_db_file = path;
-	Tracer::cout("parsing: ", path);
+	Tracer::_info("parsing: ", path);
 
 	// get the file contents into a string stream
 	File db_file(path);

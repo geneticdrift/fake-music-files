@@ -26,6 +26,7 @@
 
 #include <mutex>
 #include <string>
+#include <vector>
 
 namespace FMF {
 
@@ -41,6 +42,8 @@ public:
 	MusicFileCreator(Context& ctx);
 	~MusicFileCreator();
 
+	bool init();
+
 	/**
 	 * create fake music file for track info @e ti
 	 *
@@ -52,7 +55,7 @@ public:
 	bool create_music_file(const TrackInfo& ti, std::string& dir_path);
 
 private:
-	void read_template_file();
+	bool read_template_file();
 
 	bool make_dir_path(const TrackInfo& ti, std::string& opath);
 
@@ -62,7 +65,7 @@ private:
 	const Options& m_opts;
 	std::mutex m_taglib_lock;
 	const File m_template_file;
-	std::string m_template_data;
+	std::vector<char> m_template_data;
 };
 
 } /* namespace FMF */

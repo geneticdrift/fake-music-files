@@ -96,8 +96,7 @@ private:
 
 		virtual void on_dir_begin(const Dir& dir);
 		virtual Dir::EachResult on_dir_entry(const Dir& dir, const dirent& de);
-		virtual void on_dir_end(const Dir& dir) {
-		}
+		virtual void on_dir_end(const Dir& dir);
 
 		void init_random();
 

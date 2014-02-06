@@ -23,7 +23,7 @@
 
 namespace FMF {
 
-/*static*/ Tracer::TraceLevel Tracer::sTraceLevel = TraceLevel::V3;
+/*static*/ Tracer::TraceLevel Tracer::sTraceLevel = TraceLevel::V0;
 /*static*/ std::mutex Tracer::sTraceMutext;
 
 } /* namespace FMF */

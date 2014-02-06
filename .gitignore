@@ -5,6 +5,7 @@ gmon.out
 fmf.cache
 gen
 build
+*.o
 
 # auto tools
 **Makefile
@@ -18,4 +19,5 @@ stamp-h1
 .deps
 fmf
 fmf.1
-fmf-1.0.tar.gz
+fmf-*.tar.gz
+config.status

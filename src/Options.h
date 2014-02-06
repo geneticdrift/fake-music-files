@@ -22,10 +22,10 @@
 #ifndef OPTIONS_H_
 #define OPTIONS_H_
 
-#include <string>
-#include <stdlib.h>
 #include <getopt.h>
-#include <iosfwd>
+#include <stddef.h>
+#include <ostream>
+#include <string>
 
 namespace FMF {
 
@@ -94,6 +94,10 @@ public:
 		return m_num_threads;
 	}
 
+	bool only_update_cache() const {
+		return update_cache() && !is_output_dir_set();
+	}
+
 	friend std::ostream& operator<<(std::ostream& os, const Options& opts);
 
 private:
@@ -113,20 +117,16 @@ private:
 
 	static struct option s_options[];
 	void validate();
-	void validate_dir(const char* opt, bool is_set, const char* name,
-			const char* var, int perm);
-	bool validate_file(const char* opt, bool is_set, const char* name,
-			const char* var, int perm);
-	void validate_num_cds(const char* opt, bool is_set, const char* name,
-			int num);
+	void validate_dir(const char* opt, bool is_set, const char* name, const char* var, int perm);
+	bool validate_file(const char* opt, bool is_set, const char* name, const char* var, int perm);
+	void validate_num_cds(const char* opt, bool is_set, const char* name, int num);
 	void validate_template_music_file();
 	void validate_num_threads();
 	void set_valid(bool valid) {
 		m_valid = m_valid && valid;
 	}
 	void missing(const char* name, const char* opt);
-	void set_real_path(std::string& var, const char* val, const char* opt,
-			const char* name);
+	void set_real_path(std::string& var, const char* val, const char* opt, const char* name);
 	void usage(const char* prog_name, std::ostream& os);
 
 	bool m_valid;

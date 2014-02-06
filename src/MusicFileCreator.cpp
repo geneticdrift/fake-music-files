@@ -40,10 +40,13 @@ namespace FMF {
 
 MusicFileCreator::MusicFileCreator(Context& ctx) :
 		m_context(ctx), m_opts(ctx.options()), m_template_file(m_opts.template_music_file()), m_template_data() {
-	read_template_file();
 }
 
 MusicFileCreator::~MusicFileCreator() {
+}
+
+bool MusicFileCreator::init() {
+	return read_template_file();
 }
 
 bool MusicFileCreator::create_music_file(const TrackInfo& ti, std::string& dir_path) {
@@ -100,7 +103,7 @@ bool MusicFileCreator::create_music_file(const TrackInfo& ti, std::string& dir_p
 	bool res = f.save();
 	if (res) {
 		m_context.on_create_success();
-		Tracer::cout("saved: ", out_path);
+		Tracer::_info("saved: ", out_path);
 	}
 	else {
 		m_context.on_create_failed();
@@ -109,13 +112,21 @@ bool MusicFileCreator::create_music_file(const TrackInfo& ti, std::string& dir_p
 	return res;
 }
 
-void MusicFileCreator::read_template_file() {
+bool MusicFileCreator::read_template_file() {
 	std::ifstream template_file(m_opts.template_music_file(), std::ios::binary | std::ios::in);
-	auto size = template_file.seekg(0, std::ios::end).tellg();
-	template_file.seekg(0, std::ios::beg);
-	m_template_data.resize(size);
-	template_file.read(m_template_data.begin().base(), size);
-	template_file.close();
+	try {
+		template_file.exceptions(std::ios_base::failbit | std::ios_base::badbit);
+		auto size = template_file.seekg(0, std::ios::end).tellg();
+		template_file.seekg(0, std::ios::beg);
+		m_template_data.resize(size);
+		template_file.read(&m_template_data[0], size);
+		template_file.close();
+	}
+	catch (std::exception& e) {
+		Tracer::_err("failed to read template file ", m_opts.template_music_file());
+		return false;
+	}
+	return true;
 }
 
 std::string name_to_path_name(const std::string& name) {

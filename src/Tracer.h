@@ -41,9 +41,9 @@ public:
 		Warn = 4,
 		Err = 8,
 		All = (Debug | Info | Warn | Err),
-		V0 = None,
-		V1 = (Info | Warn | Err),
-		V2 = (All),
+		V0 = Err,
+		V1 = (Warn | Err),
+		V2 = (Info | Warn | Err),
 		V3 = (All)
 	};
 

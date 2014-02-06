@@ -214,7 +214,7 @@ int str2int(const char* arg) {
 
 Options::Options() :
 		m_db_dir(), m_output_dir(), m_num_albums(0), m_db_file(), m_template_music_file(DEFAULT_TEMPLATE), m_skip_empty_titles(
-				true), m_verbosity(1), m_update_cache(false), m_num_threads(0), m_valid(true), m_output_dir_set(false), m_db_dir_set(
+				true), m_verbosity(0), m_update_cache(false), m_num_threads(0), m_valid(true), m_output_dir_set(false), m_db_dir_set(
 				false), m_num_albums_set(false), m_db_file_set(false), m_template_music_file_set(false), m_num_threads_set(
 				false) {
 }
@@ -360,7 +360,7 @@ void Options::validate() {
 	if (!m_db_file_set && m_output_dir_set) {
 		validate_num_cds("-n, --num-albums", m_num_albums_set, "num cds", m_num_albums);
 	}
-	if (validate_file("-t, --template", true, "template music file", m_template_music_file.c_str(), R_OK)) {
+	if (m_output_dir_set && validate_file("-t, --template", true, "template music file", m_template_music_file.c_str(), R_OK)) {
 		validate_template_music_file();
 	}
 	if (m_num_threads_set) {

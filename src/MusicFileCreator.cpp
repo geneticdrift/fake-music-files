@@ -99,6 +99,7 @@ bool MusicFileCreator::create_music_file(const TrackInfo& ti, std::string& dir_p
 	tag->setComment(TagLib::String(ti.comment(), TagLib::String::UTF8));
 	tag->setYear(ti.year());
 	tag->setTrack(ti.track_num());
+	tag->setComment(ti.db_file());
 
 	bool res = f.save();
 	if (res) {

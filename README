@@ -46,7 +46,7 @@ Options:
     -t, --template   The template music file to use for creating fake music files.
                      This file will be copied and renamed and then tagged for each generated fake music file.
                      Keep it small if generating many files.
-                     Default: /tmp/usr/local/share/fmf/template/template.mp3
+                     Default: /usr/local/share/fmf/template/template.mp3
     
     -c, --threads    The number of threads to use.
                      Default: 1
@@ -67,6 +67,10 @@ Building
 4. gcc >= 4.8 - required `-std=c++11`
 5. autoconf >= 2.6 (for maintainer)
 
-Dependencies installation on ubuntu:
+Dependencies installation:
 
     apt-get install libuchardet-dev libtag1-dev python-docutils autoconf
+
+License
+-------
+GPLv2

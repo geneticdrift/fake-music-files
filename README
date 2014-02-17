@@ -14,7 +14,7 @@ CDDB can be downloaded from http://ftp.freedb.org/pub/freedb/. Any update db can
     wget http://ftp.freedb.org/pub/freedb/freedb-update-20120101-20120201.tar.bz2
     mkdir /tmp/cddb
     cd /tmp/cddb
-    tar ../jxvf freedb-update-20120101-20120201.tar.bz2
+    tar jxvf ../freedb-update-20120101-20120201.tar.bz2
 
 Now `/tmp/cddb` can be used as argument for `--cddb` option.
 

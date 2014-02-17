@@ -19,7 +19,7 @@ FreeCDDB installation:
     wget http://ftp.freedb.org/pub/freedb/freedb-update-20120101-20120201.tar.bz2
 	mkdir cddb
 	cd cddb
-    tar ../jxvf freedb-update-20120101-20120201.tar.bz2
+    tar jxvf ../freedb-update-20120101-20120201.tar.bz2
 
 
 Build and install

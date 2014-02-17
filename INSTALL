@@ -10,16 +10,16 @@ Dependencies
 4. python-docutils - rst2man required for generating manpage
 5. autoconf >= 2.6 - building from source
 
-Dependencies installation on ubuntu:
+Dependencies installation on debian:
 
-	apt-get install libuchardet-dev libtag1-dev python-docutils autoconf
+	apt-get install g++ libuchardet-dev libtag1-dev python-docutils
 
 FreeCDDB installation:
 
     wget http://ftp.freedb.org/pub/freedb/freedb-update-20120101-20120201.tar.bz2
 	mkdir cddb
 	cd cddb
-    tar jxvf freedb-update-20120101-20120201.tar.bz2
+    tar ../jxvf freedb-update-20120101-20120201.tar.bz2
 
 
 Build and install

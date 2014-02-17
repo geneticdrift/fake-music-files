@@ -36,7 +36,7 @@ Example:
      | wget http://ftp.freedb.org/pub/freedb/freedb-update-20120101-20120201.tar.bz2
      | mkdir /tmp/cddb
      | cd /tmp/cddb
-     | tar jxvf freedb-update-20120101-20120201.tar.bz2
+     | tar ../jxvf freedb-update-20120101-20120201.tar.bz2
 
 /tmp/cddb can now be used as argument for ``--cddb`` option.
 

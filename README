@@ -14,7 +14,7 @@ CDDB can be downloaded from http://ftp.freedb.org/pub/freedb/. Any update db can
     wget http://ftp.freedb.org/pub/freedb/freedb-update-20120101-20120201.tar.bz2
     mkdir /tmp/cddb
     cd /tmp/cddb
-    tar jxvf freedb-update-20120101-20120201.tar.bz2
+    tar ../jxvf freedb-update-20120101-20120201.tar.bz2
 
 Now `/tmp/cddb` can be used as argument for `--cddb` option.
 
@@ -64,12 +64,12 @@ Building
 1. taglib - >= 1.7 tagging library
 2. uchardet - charset detection library
 3. python-docutils - rst2man required for generating manpage
-4. gcc >= 4.8 - required `-std=c++11`
+4. gcc >= 4.7 - required `-std=c++11`
 5. autoconf >= 2.6 (for maintainer)
 
 Dependencies installation:
 
-    apt-get install libuchardet-dev libtag1-dev python-docutils autoconf
+    apt-get install g++ libuchardet-dev libtag1-dev python-docutils
 
 License
 -------

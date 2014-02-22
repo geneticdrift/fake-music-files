@@ -62,6 +62,8 @@ if test "x${debug}" = xyes; then
   CXXFLAGS="${CXXFLAGS} -O0 -g3 -gdwarf-3"
 fi
 
+CXXFLAGS+=" -Wall -Wextra"
+
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
 

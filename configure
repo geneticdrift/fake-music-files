@@ -5753,6 +5753,8 @@ if test "x${debug}" = xyes; then
   CXXFLAGS="${CXXFLAGS} -O0 -g3 -gdwarf-3"
 fi
 
+CXXFLAGS+=" -Wall -Wextra"
+
 ac_config_files="$ac_config_files Makefile"
 
 cat >confcache <<\_ACEOF

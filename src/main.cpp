@@ -39,7 +39,7 @@ using FMF::Tracer;
 #include <future>
 #include <signal.h>
 
-void sig_handler(int sig) {
+void sig_handler(int /*sig*/) {
 	Context::signal();
 }
 

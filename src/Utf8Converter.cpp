@@ -54,7 +54,7 @@ bool Utf8Converter::convert(const std::string& str, std::string& utf8_str) {
 	}
 	if (m_source_charset.empty()) {
 		// this can be either 7bit ascii or undetected charset
-		if (str.end() == std::find_if(str.begin(), str.end(), [](std::string::value_type c) {return c > 0x7f;})) {
+		if (str.end() == std::find_if(str.begin(), str.end(), [](std::string::value_type c) {return (unsigned)c > 0x7f;})) {
 			// ok, 7bit ascii
 			utf8_str = str;
 			return true;

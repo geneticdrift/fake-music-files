@@ -163,6 +163,9 @@ CDDB::DBCache::DBCache(const CDDB& cddb) :
 	return success;
 }
 
+void CDDB::DBCache::on_dir_begin(const Dir& /*dir*/) {
+}
+
 Dir::EachResult CDDB::DBCache::on_dir_entry(const Dir& dir, const dirent& de) {
 	if (Context::stopped())
 		return Dir::EachResult::STOP;
@@ -182,6 +185,9 @@ Dir::EachResult CDDB::DBCache::on_dir_entry(const Dir& dir, const dirent& de) {
 		Tracer::_warn("scanning produced no valid cddb files from genre dir: ", sub_dir.path());
 	}
 	return Dir::EachResult::CONTINUE;
+}
+
+void CDDB::DBCache::on_dir_end(const Dir& /*dir*/) {
 }
 
 bool CDDB::DBCache::scan() {
@@ -246,7 +252,8 @@ CDDB::GenreCache::GenreCache(DBCache& db_cache, const std::string& dir_name) :
 		m_db_cache(db_cache), m_genre_dir_name(dir_name), m_entries(), m_random_dist() {
 }
 
-void CDDB::GenreCache::on_dir_begin(const Dir& dir) {
+void CDDB::GenreCache::on_dir_begin(const Dir&) {
+
 	m_entries.clear();
 }
 
@@ -265,7 +272,7 @@ uint32_t file_name_to_int(const char* fname) {
 	return n;
 }
 
-Dir::EachResult CDDB::GenreCache::on_dir_entry(const Dir& dir, const dirent& de) {
+Dir::EachResult CDDB::GenreCache::on_dir_entry(const Dir& /*dir*/, const dirent& de) {
 	if (Context::stopped())
 		return Dir::EachResult::STOP;
 	uint32_t n = file_name_to_int(de.d_name);
@@ -279,7 +286,7 @@ Dir::EachResult CDDB::GenreCache::on_dir_entry(const Dir& dir, const dirent& de)
 	return Dir::EachResult::CONTINUE;
 }
 
-void CDDB::GenreCache::on_dir_end(const Dir& dir) {
+void CDDB::GenreCache::on_dir_end(const Dir& /*dir*/) {
 	// erase the output line
 	std::cout << std::setw(80) << std::setfill(' ') << "\r";
 }

@@ -69,7 +69,7 @@ Building
 
 Dependencies installation:
 
-    apt-get install g++ libuchardet-dev libtag1-dev python-docutils
+    apt-get install g++ pkg-config libuchardet-dev libtag1-dev python-docutils
 
 License
 -------

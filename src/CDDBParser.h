@@ -53,7 +53,7 @@ class NumberedKeywordParser;
  */
 class CDDBParser {
 public:
-	static constexpr auto VALUE_SEPARATOR = " / ";
+	static constexpr const char VALUE_SEPARATOR[] = " / ";
 
 	CDDBParser(Context& ctx);
 	~CDDBParser();

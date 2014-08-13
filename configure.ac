@@ -1,5 +1,5 @@
 AC_PREREQ([2.68])
-AC_INIT([fmf], [1.0.1], [gd@iotide.com])
+AC_INIT([fmf], [1.0.2], [gd@iotide.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 m4_include([m4/ax_cxx_compile_stdcxx_11.m4])

@@ -160,7 +160,8 @@ bool MusicFileCreator::make_dir_path(const TrackInfo& ti, std::string& opath) {
 }
 
 std::string MusicFileCreator::make_file_name(const TrackInfo& ti) {
-	constexpr const char* INDEX_DELIM = " - ";
+	constexpr const char INDEX_DELIM[] = " - ";
+	static_assert( sizeof(INDEX_DELIM) == sizeof(" - "), "");
 	const int index_width = std::max(2U, static_cast<unsigned>(::log10(ti.tracks_total())));
 	const int reserved_len = m_template_file.extension().length() + 1 + index_width + sizeof(INDEX_DELIM) - 1;
 	const size_t max_name_len = NAME_MAX - reserved_len;

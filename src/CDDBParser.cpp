@@ -33,6 +33,8 @@
 
 namespace FMF {
 
+constexpr const char CDDBParser::VALUE_SEPARATOR[];
+
 /**
  * abstract base line parser.
  */
@@ -186,7 +188,7 @@ public:
 	}
 
 private:
-	unsigned m_num;
+	std::string::size_type m_num;
 	std::string m_value;
 	std::vector<std::string> m_values;
 };
@@ -321,7 +323,8 @@ std::ostream& operator <<(std::ostream& os, const CDDBParser& db_parser) {
 }
 
 /*static*/std::pair<std::string, std::string> CDDBParser::splitValue(const std::string& value) {
-	size_t pos = value.find(VALUE_SEPARATOR, 0);
+	static_assert( sizeof(VALUE_SEPARATOR) == sizeof(" / "), "");
+	std::string::size_type pos = value.find(VALUE_SEPARATOR, 0);
 	if (pos == std::string::npos) {
 		return std::make_pair(std::string(), value);
 	}

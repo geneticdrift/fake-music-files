@@ -24,6 +24,7 @@
 
 #include "Options.h"
 #include "CDDB.h"
+#include "Tracer.h"
 
 #include <atomic>
 #include <mutex>
@@ -52,7 +53,11 @@ public:
 	size_t on_parse_failed(const std::string& db_file);
 
 	size_t on_create_success() {
-		return ++m_create_success;
+		int output_interval = m_opts.num_albums() > 200 ? 1000 : 100;
+		if (!(++m_create_success % output_interval)) {
+			Tracer::cout("Created: ", m_create_success);
+		}
+		return m_create_success;
 	}
 
 	size_t on_create_failed() {
